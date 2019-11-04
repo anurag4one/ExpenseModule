@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
@@ -48,8 +49,17 @@ public class ExpenseController {
 		return service.deleteExpense(id);
 	}
 	
-	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-	public Expense updateExpense(@RequestBody Expense expense) throws WrongIDException {
-		return service.modifyExpense(expense);
+//	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
+//	public Expense updateExpense(@RequestBody Expense expense) throws WrongIDException {
+//		return service.modifyExpense(expense);
+//	}
+	
+	@PutMapping(value = "/update")
+	public String updateExpense(@RequestParam int expCode, String expType, String expDescription) throws WrongIDException {
+		int temp = service.modifyExpense(expCode, expType, expDescription);
+		if(temp == 1)
+				return "Successfully modified";
+		else
+			return "Couldn't modify";
 	}
 }

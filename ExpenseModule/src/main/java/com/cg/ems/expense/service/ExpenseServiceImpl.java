@@ -1,15 +1,8 @@
-/**
- * 
- */
 package com.cg.ems.expense.service;
-
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
 import com.cg.ems.expense.repo.ExpenseRepo;
@@ -56,23 +49,22 @@ public class ExpenseServiceImpl implements ExpenseService {
 		}
 	}
 
+
 //	@Override
-//	public Expense modifyExpense(int expCode, String expType, String expDescription) throws WrongIDException {
+//	public Expense modifyExpense(Expense expense) throws WrongIDException {
 //		try {
-//			repo.modifyExpense(expCode, expType, expDescription);
-//			return repo.findById(expCode).get();
+//		return repo.save(expense);
 //		} catch (Exception e) {
-//			throw new WrongIDException("No Expense with Expense Code " + expCode + " found");
+//			throw new WrongIDException("No Expense found");
 //		}
 //	}
 
 	@Override
-	public Expense modifyExpense(Expense expense) throws WrongIDException {
-		try {
-		return repo.save(expense);
+	public int modifyExpense(int expCode, String expType, String expDescription) throws WrongIDException {
+		try {			
+			return repo.modifyExpense(expCode, expType, expDescription);
 		} catch (Exception e) {
-			throw new WrongIDException("No Expense found");
+			throw new WrongIDException("Expense wtih code "+expCode+" not found");
 		}
-	}
-	
+	}	
 }
