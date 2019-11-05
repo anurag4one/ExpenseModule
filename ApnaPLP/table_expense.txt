@@ -1,0 +1,5 @@
+create table expense (
+expense_code int primary key,
+expense_type varchar(15),
+expense_description varchar(100)
+);
