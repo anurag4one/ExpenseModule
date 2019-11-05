@@ -1,15 +1,12 @@
-/**
- * 
- */
 package com.cg.ems.expense.service;
-
 import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
 
@@ -17,41 +14,35 @@ import com.cg.ems.expense.exception.WrongIDException;
  * @author Anurag
  *
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ExpenseServiceImplTest {
 
 	@Autowired
-	private ExpenseService service;
+	ExpenseService service;
 	
 	Expense expense;
 	
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	public void setUp() throws Exception {
-		service = new ExpenseServiceImpl();
+	public void setUp() {
 		expense = new Expense();
 	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
+	
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		expense = null;
-		service = null;
 	}
-
+	
 	/**
 	 * Test method for
 	 * {@link com.cg.ems.expense.service.ExpenseServiceImpl#addExpense(com.cg.ems.expense.dto.Expense)}.
 	 */
 	@Test
 	public void testAddExpense() {
-		//expense.setExpenseCode(1001);
+		expense.setExpenseCode(1001);
 		expense.setExpenseType("Alfa");
 		expense.setExpenseDescription("Something wrong is going on");
-		service.addExpense(expense);
+		Expense e = service.addExpense(expense);
 	}
 	
 	@Test
