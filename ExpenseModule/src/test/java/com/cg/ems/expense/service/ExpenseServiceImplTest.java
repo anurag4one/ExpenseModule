@@ -38,7 +38,7 @@ public class ExpenseServiceImplTest {
 	 * {@link com.cg.ems.expense.service.ExpenseServiceImpl#addExpense(com.cg.ems.expense.dto.Expense)}.
 	 */
 	@Test
-	public void testAddExpense() {
+	public void testAddExpense() { //successfull
 		expense.setExpenseCode(1001);
 		expense.setExpenseType("Alfa");
 		expense.setExpenseDescription("Something wrong is going on");
