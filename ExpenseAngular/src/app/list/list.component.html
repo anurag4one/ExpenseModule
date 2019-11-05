@@ -1,0 +1,12 @@
+<table class="table table-bordered">
+  <tr>
+    <th>Expense Code</th>
+    <th>Expense Type</th>
+    <th>Expense Description</th>
+  </tr>
+  <tr *ngFor="let e of expenses; let i = index">
+    <td>{{e.expenseCode}}</td>
+    <td>{{e.expenseType}}</td>
+    <td>{{e.expenseDescription}}</td>
+  </tr>
+</table>

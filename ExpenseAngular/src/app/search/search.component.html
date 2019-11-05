@@ -1,0 +1,25 @@
+<form (ngSubmit)="searchExpense()">
+  <div class="form group">
+      <label>Enter the Expense Code</label><br>
+      <input type="number" [(ngModel)]=id name="id"><br><br> 
+    </div>
+  <div class="form group">
+    <button type="submit" class="btn btn-success">Display Expense</button><br>
+  </div>
+</form>
+
+<div [hidden]="!submitted">
+<table class="table table-bordered">
+  <tr>
+    <th>Expense Code</th>
+    <th>Expense Type</th>
+    <th>Expense Description</th>
+  </tr>
+  <tr>
+    <td>{{expense.expenseCode}}</td>
+    <td>{{expense.expenseType}}</td>
+    <td>{{expense.expenseDescription}}</td>
+  </tr>
+</table>
+</div>
+
