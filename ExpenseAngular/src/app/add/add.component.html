@@ -8,8 +8,8 @@
 
    <tr>
       <td width="15%"><label for="expenseType">Expense Type</label></td>
-      <td><input name="expenseType" [(ngModel)]=expense.expenseType #name=ngModel required pattern="[A-Z][a-z]{2,15}"
-          placeholder="Enter Expense Type">
+      <td ><input name="expenseType" [(ngModel)]=expense.expenseType #name=ngModel required pattern="[A-Z][a-z]{2,15}"
+          placeholder="Enter Expense Type" maxlength="15">
         <span *ngIf="expenseType.touched && expenseType.invalid && 
        (expenseType.errors.required || expenseType.errors.pattern)" class="alert-warning">
           Expense Type is required here.
@@ -20,7 +20,7 @@
     <tr>
       <td><label for="expenseDescription">Expense Description</label></td>
       <td><input name="expenseDescription" [(ngModel)]=player.expenseDescription #team=ngModel required pattern="[A-Z][a-z]{1,}"
-          placeholder="Enter Description">
+          placeholder="Enter Description" maxlength="100" rows="20" cols="30">
         <span *ngIf="expenseDescription.touched && expenseDescription.invalid && 
      (expenseDescription.errors.required || expenseDescription.errors.pattern)" class="alert-warning">
      Expense Description is required
