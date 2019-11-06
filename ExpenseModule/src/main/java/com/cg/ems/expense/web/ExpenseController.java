@@ -5,6 +5,7 @@ package com.cg.ems.expense.web;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.cg.ems.expense.service.ExpenseService;
  * @author Anurag Kumar
  * @version 1.0
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/expense")
 public class ExpenseController {
