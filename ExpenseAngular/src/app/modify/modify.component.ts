@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ModifyComponent implements OnInit {
 
   expense: Expense;
-  expense1: String;
+  expense1: String = "";
   
   constructor(private service: ExpenseService, private route:Router) {
     this.expense = new Expense();
@@ -22,7 +22,8 @@ export class ModifyComponent implements OnInit {
   updateExpense(){
     this.service.modifyExpense(this.expense).subscribe(e => this.expense1 = e);
     this.expense = new Expense();
-    alert("Expense modified");
+    if(this.expense1 == "Successfully modified"){
+    alert("Expense modified");}
     this.route.navigate(['list']);  
   }
 }
