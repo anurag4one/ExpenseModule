@@ -9,14 +9,15 @@ import { Observable } from 'rxjs';
 })
 export class ExpenseService {
    
+  private baseUrl = 'http://localhost:8182/expense';
   constructor(public http: HttpClient) { }
 
-  saveExpense(exp: Expense){
-    return this.http.post<Expense>("localhost:8182/expense/add", exp);
+  saveExpense(exp: Expense):Observable<Expense>{
+    return this.http.post<Expense>(`${this.baseUrl}`+'/add', exp);
   }
 
   findExpense(expCode: number):Observable<Expense>{
-    return this.http.get<Expense>("localhost:8182/expense/expenseCode/"+expCode);
+    return this.http.get<Expense>(this.baseUrl+"/"+expCode);
   }
 
   listExpenses(){

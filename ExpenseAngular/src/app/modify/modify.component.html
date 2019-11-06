@@ -18,7 +18,7 @@
     </tr>
    <tr>
       <td><label for="expenseType">Expense Type</label></td>
-      <td><input name="expenseType" [(ngModel)]=expense.expenseType #expenseType=ngModel required pattern="[A-Z][a-z]{2,15}"
+      <td><input name="expenseType" [(ngModel)]=expense.expenseType #expenseType=ngModel required pattern="[A-Za-z,. ]{15,100}"
           placeholder="Enter Expense Type" maxlength="15">
         <span *ngIf="expenseType.touched && expenseType.invalid && 
        (expenseType.errors.required || expenseType.errors.pattern)" class="alert-warning">

@@ -8,7 +8,8 @@ import { ListComponent } from './list/list.component';
 import { ModifyComponent } from './modify/modify.component';
 import { DeleteComponent } from './delete/delete.component';
 import { NaviRoutingModule } from './navi/navi-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './http-interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,11 @@ import { HttpClientModule } from '@angular/common/http';
     NaviRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
