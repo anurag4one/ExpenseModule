@@ -58,12 +58,7 @@ public class ExpenseController {
 		return service.deleteExpense(id);
 	}
 	
-//	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-//	public Expense updateExpense(@RequestBody Expense expense) throws WrongIDException {
-//		return service.modifyExpense(expense);
-//	}
-	
-	@PutMapping(value = "/update")
+	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
 	public String updateExpense(@RequestBody Expense expense) throws WrongIDException {
 		int temp = service.modifyExpense(expense);
 		if(temp == 1)

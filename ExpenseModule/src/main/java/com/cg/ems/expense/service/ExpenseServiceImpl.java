@@ -54,15 +54,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 		}
 	}
 
-//	@Override
-//	public Expense modifyExpense(Expense expense) throws WrongIDException {
-//		try {
-//		return repo.save(expense);
-//		} catch (Exception e) {
-//			throw new WrongIDException("No Expense found");
-//		}
-//	}
-
 	@Override
 	public int modifyExpense(Expense expense) throws WrongIDException {
 		int expCode = expense.getExpenseCode();

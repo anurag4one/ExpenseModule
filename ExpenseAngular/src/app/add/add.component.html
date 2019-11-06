@@ -20,7 +20,7 @@
     <tr>
       <td><label for="expenseDescription">Expense Description</label></td>
       <td><input name="expenseDescription" [(ngModel)]=expense.expenseDescription #expenseDescription=ngModel required pattern="[A-Za-z,. ]{15,100}"
-          placeholder="Enter Description" maxlength="100" rows="20" cols="30">
+          placeholder="Enter Description" maxlength="100">
         <span *ngIf="expenseDescription.touched && expenseDescription.invalid && 
      (expenseDescription.errors.required || expenseDescription.errors.pattern)" class="alert-warning">
      Expense Description is required
