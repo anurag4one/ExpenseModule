@@ -1,11 +1,24 @@
-<form (ngSubmit)="searchExpense()">
-  <div class="form group">
-      <label>Enter the Expense Code</label><br>
-      <input type="number" [(ngModel)]=id name="id"><br><br> 
-    </div>
-  <div class="form group">
-    <button type="submit" class="btn btn-success">Display Expense</button><br><hr>
-  </div>
+<form (ngSubmit)="searchExpense()" #addForm="ngForm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="2">Find Expense</th>
+      </tr>
+    </thead>
+
+   <tr>
+      <td width="15%"><label for="expenseCode">Expense Code</label></td>
+      <td ><input name="expenseCode" [(ngModel)]=expense.expenseCode #expenseCode=ngModel placeholder="Enter Expense Code">
+        <span *ngIf="expenseCode.touched && expenseCode.invalid && expenseCode.errors.required" class="alert-warning">
+          Expense Code is required here. Must be numbers.
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2"><button id="btn" type="submit" [disabled]="!addForm.valid" class="btn btn-success">Find</button>
+      </th>
+    </tr>
+</table>
 </form>
 
 <div [hidden]="!submitted">

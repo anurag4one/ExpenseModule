@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddComponent implements OnInit {
 
   expense : Expense;
-  expense1: Expense;
+  expense1 : Expense;
 
   constructor(private service: ExpenseService, private route:Router) {
     this.expense = new Expense();
@@ -24,6 +24,7 @@ export class AddComponent implements OnInit {
   addExpense(){
     this.service.saveExpense(this.expense).subscribe(e => this.expense1 = e);
     this.expense = new Expense();
-    this.route.navigate(['add']);              
+    alert("Expense added")
+    this.route.navigate(['list']);              
   }
 }

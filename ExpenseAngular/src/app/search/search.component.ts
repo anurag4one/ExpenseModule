@@ -11,9 +11,7 @@ import { ExpenseService } from '../expense/expense.service';
 export class SearchComponent implements OnInit {
 
   expense:Expense;
-  id:number;
-  submitted:boolean=true;
-
+  
   constructor(private service: ExpenseService) { }
 
   ngOnInit() {
@@ -21,6 +19,6 @@ export class SearchComponent implements OnInit {
   }
 
   searchExpense() {
-    return this.service.findExpense(this.id).subscribe(data => this.expense = data);
+    return this.service.findExpense(this.expense.expenseCode).subscribe(data => this.expense = data);
    }
 }
