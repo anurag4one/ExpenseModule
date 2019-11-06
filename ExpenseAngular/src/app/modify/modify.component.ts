@@ -10,19 +10,19 @@ import { Router } from '@angular/router';
 })
 export class ModifyComponent implements OnInit {
 
-  expense:Expense;
-  expense1: Expense;
+  expense: Expense;
+  expense1: String;
   
   constructor(private service: ExpenseService, private route:Router) {
     this.expense = new Expense();
    }
-  ngOnInit() {
-    this.expense = new Expense();
-  }
 
-  modifyExpense(){
-    this.service.modifyExpense(this.expense);
+  ngOnInit() {}
+
+  updateExpense(){
+    this.service.modifyExpense(this.expense).subscribe(e => this.expense1 = e);
     this.expense = new Expense();
-    this.route.navigate(['search']);  
+    alert("Expense modified");
+    this.route.navigate(['list']);  
   }
 }

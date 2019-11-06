@@ -62,7 +62,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 		try {
 			return repo.modifyExpense(expCode, expType, expDescription);
 		} catch (Exception e) {
-			throw new WrongIDException("Expense wtih code " + expCode + " not found");
+			throw new WrongIDException("Expense with code " + expCode + " not found");
 		}
 	}
 

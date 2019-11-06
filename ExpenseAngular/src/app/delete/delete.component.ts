@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../expensemodel/expense';
 import { ExpenseService } from '../expense/expense.service';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete',
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class DeleteComponent implements OnInit {
 
   expense:Expense;
+  b:boolean;
   id:number;
   submitted:boolean=true;
 
@@ -21,11 +22,11 @@ export class DeleteComponent implements OnInit {
   }
 
   searchExpense() {
-    return this.service.findExpense(this.id).subscribe(data => this.expense = data);
+    this.service.findExpense(this.id).subscribe(data => this.expense = data);
   }
-  deleteExpense() {
+  removeExpense() {
     var ans = confirm("Are You Sure You want To delete?");
     if (ans)
-      this.service.deleteExpense(this.id);
+      this.service.deleteExpense(this.id).subscribe(data => this.b = data);
   }
 }

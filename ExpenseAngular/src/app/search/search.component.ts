@@ -16,9 +16,7 @@ export class SearchComponent implements OnInit {
     this.expense = new Expense();
   }
 
-  ngOnInit() {
-    //this.expense = new Expense();
-  }
+  ngOnInit() {}
 
   searchExpense() {
     this.service.findExpense(this.expense.expenseCode).subscribe(data => {

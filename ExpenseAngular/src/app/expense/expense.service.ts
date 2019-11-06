@@ -24,7 +24,7 @@ export class ExpenseService {
     return this.http.get<Expense[]>(this.baseUrl+"/");
   }
   
-  modifyExpense(exp: Expense){
+  modifyExpense(exp: Expense):Observable<String>{
     return this.http.put<String>(this.baseUrl+"/update/",exp);
   }
 
