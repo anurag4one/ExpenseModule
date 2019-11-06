@@ -11,10 +11,10 @@ const routes: Routes = [
   { path: "", redirectTo: "/add", pathMatch: "full" },
   { path: "add", component: AddComponent },
   { path: "search", component: SearchComponent },
-  { path: "**", redirectTo: "/add", pathMatch: "full" },
   { path: "list", component: ListComponent },
   { path: "modify", component:  ModifyComponent },
-  { path: "delete", component: DeleteComponent }
+  { path: "delete", component: DeleteComponent },
+  { path: "**", redirectTo: "/add", pathMatch: "full" }
 ];
 
 @NgModule({

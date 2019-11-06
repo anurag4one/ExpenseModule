@@ -1,3 +1,46 @@
-<p>
-  modify works!
-</p>
+<form (ngSubmit)="modifyExpense()" #addForm="ngForm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th colspan="2">Modify Expense</th>
+      </tr>
+    </thead>
+
+    <tr>
+      <td width="15%"><label for="expenseCode">Expense Code</label></td>
+      <td><input name="expenseCode" [(ngModel)]="expense.expenseCode" #expenseCode=ngModel required pattern="[0-9]"
+          placeholder="Enter expenseCode">
+        <span *ngIf="expenseCode.touched && expenseCode.invalid && 
+      (expenseCode.errors.required || expenseCode.errors.pattern)" class="alert-warning">
+          Player Expense Code is required
+        </span>
+      </td>
+    </tr>
+   <tr>
+      <td><label for="expenseType">Expense Type</label></td>
+      <td><input name="expenseType" [(ngModel)]=expense.expenseType #expenseType=ngModel required pattern="[A-Z][a-z]{2,15}"
+          placeholder="Enter Expense Type">
+        <span *ngIf="expenseType.touched && expenseType.invalid && 
+       (expenseType.errors.required || expenseType.errors.pattern)" class="alert-warning">
+          Expense Type is required here.
+        </span>
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="expenseDescription">Expense Description</label></td>
+      <td><input name="expenseDescription" [(ngModel)]=player.expenseDescription #expenseDescription=ngModel required pattern="[A-Z][a-z]{1,}"
+          placeholder="Enter Description">
+        <span *ngIf="expenseDescription.touched && expenseDescription.invalid && 
+     (expenseDescription.errors.required || expenseDescription.errors.pattern)" class="alert-warning">
+     Expense Description is required
+        </span>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2"><button id="btn" type="submit" [disabled]="!addForm.valid" class="btn btn-success">Add Expense</button>
+      </th>
+    </tr>
+  </table>
+</form>
