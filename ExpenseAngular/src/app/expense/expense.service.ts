@@ -23,12 +23,11 @@ export class ExpenseService {
   return this.http.get<Expense[]>("localhost:8182/expense/");
   }
   
-  modifyExpense(expCode: number, expType: String, expDescription: String){
-    return this.http.put<String>("localhost:8182/expense/update/",expCode);
+  modifyExpense(exp: Expense){
+    return this.http.put<String>("localhost:8182/expense/update/",exp);
   }
 
   deleteExpense(expCode: number){
     return this.http.delete<boolean>("localhost:8182/expense/delete/"+expCode);
   }
-
 }
