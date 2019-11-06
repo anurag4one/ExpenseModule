@@ -17,7 +17,7 @@ export class ExpenseService {
   }
 
   findExpense(expCode: number):Observable<Expense>{
-    return this.http.get<Expense>(this.baseUrl+"/"+expCode);
+    return this.http.get<Expense>(this.baseUrl+"/expenseCode/"+expCode);
   }
 
   listExpenses(){

@@ -8,7 +8,7 @@
 
    <tr>
       <td width="15%"><label for="expenseCode">Expense Code</label></td>
-      <td ><input name="expenseCode" [(ngModel)]=expense.expenseCode #expenseCode=ngModel placeholder="Enter Expense Code">
+      <td ><input name="expenseCode" [(ngModel)]=expense.expenseCode #expenseCode=ngModel required pattern="[0-9]{1,}" placeholder="Enter Expense Code">
         <span *ngIf="expenseCode.touched && expenseCode.invalid && expenseCode.errors.required" class="alert-warning">
           Expense Code is required here. Must be numbers.
         </span>
@@ -21,7 +21,6 @@
 </table>
 </form>
 
-<div [hidden]="!submitted">
 <table class="table table-bordered">
   <tr>
     <th>Expense Code</th>
@@ -34,5 +33,3 @@
     <td>{{expense.expenseDescription}}</td>
   </tr>
 </table>
-</div>
-

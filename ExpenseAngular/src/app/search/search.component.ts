@@ -10,15 +10,19 @@ import { ExpenseService } from '../expense/expense.service';
 })
 export class SearchComponent implements OnInit {
 
-  expense:Expense;
-  
-  constructor(private service: ExpenseService) { }
+  expense: Expense;
 
-  ngOnInit() {
+  constructor(private service: ExpenseService) {
     this.expense = new Expense();
   }
 
+  ngOnInit() {
+    //this.expense = new Expense();
+  }
+
   searchExpense() {
-    return this.service.findExpense(this.expense.expenseCode).subscribe(data => this.expense = data);
-   }
+    this.service.findExpense(this.expense.expenseCode).subscribe(data => {
+      this.expense = data
+    });
+  }
 }

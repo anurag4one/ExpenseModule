@@ -10,11 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class ListComponent implements OnInit {
 
-  expenses: Observable<Expense[]>;
+  expenses: Expense[];
 
-  constructor(private service: ExpenseService) { }
+  constructor(private service: ExpenseService) {
+    //this.expenses=new Expense();
+   }
 
   ngOnInit() {
-    this.expenses = this.service.listExpenses();
+    this.service.listExpenses().subscribe(p => this.expenses = p);
   }
 }
