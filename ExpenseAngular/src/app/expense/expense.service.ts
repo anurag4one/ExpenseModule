@@ -13,7 +13,7 @@ export class ExpenseService {
   constructor(public http: HttpClient) { }
 
   saveExpense(exp: Expense):Observable<Expense>{
-    return this.http.post<Expense>(`${this.baseUrl}`+'/add', exp);
+    return this.http.post<Expense>(this.baseUrl+'/add', exp);
   }
 
   findExpense(expCode: number):Observable<Expense>{
@@ -21,14 +21,14 @@ export class ExpenseService {
   }
 
   listExpenses(){
-  return this.http.get<Expense[]>("localhost:8182/expense/");
+    return this.http.get<Expense[]>(this.baseUrl+"/");
   }
   
   modifyExpense(exp: Expense){
-    return this.http.put<String>("localhost:8182/expense/update/",exp);
+    return this.http.put<String>(this.baseUrl+"/update/",exp);
   }
 
   deleteExpense(expCode: number){
-    return this.http.delete<boolean>("localhost:8182/expense/delete/"+expCode);
+    return this.http.delete<boolean>(this.baseUrl+"/delete/"+expCode);
   }
 }
