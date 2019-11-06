@@ -21,10 +21,14 @@ public interface ExpenseService {
 	
 	Expense displayExpense(int expCode) throws WrongIDException;
 	
-	int modifyExpense(int expCode, String expType, String expDescription) throws WrongIDException;
+	//int modifyExpense(int expCode, String expType, String expDescription) throws WrongIDException;
 	
 	//Expense modifyExpense(Expense expense) throws WrongIDException;
 	
 	boolean deleteExpense(int expCode) throws WrongIDException;
+
+	List<Integer> displayAllId();
+
+	int modifyExpense(Expense expense) throws WrongIDException;
 
 }

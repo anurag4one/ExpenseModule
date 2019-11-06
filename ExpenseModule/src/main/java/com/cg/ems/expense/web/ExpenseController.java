@@ -39,6 +39,13 @@ public class ExpenseController {
 		return service.displayAllExpense();
 	}
 
+	@GetMapping(value = "/allId", produces = "application/json")
+	public List<Integer> getAllExpensesId() {
+		List<Integer> ids =  service.displayAllId();
+		
+		return ids;
+	}
+	
 	@GetMapping(value = "/expenseCode/{id}", produces = "application/json")
 	public Expense searchByExpenseCode(@PathVariable int id) throws WrongIDException {
 		return service.displayExpense(id);
@@ -55,8 +62,8 @@ public class ExpenseController {
 //	}
 	
 	@PutMapping(value = "/update")
-	public String updateExpense(@RequestParam int expCode, String expType, String expDescription) throws WrongIDException {
-		int temp = service.modifyExpense(expCode, expType, expDescription);
+	public String updateExpense(@RequestBody Expense expense) throws WrongIDException {
+		int temp = service.modifyExpense(expense);
 		if(temp == 1)
 				return "Successfully modified";
 		else

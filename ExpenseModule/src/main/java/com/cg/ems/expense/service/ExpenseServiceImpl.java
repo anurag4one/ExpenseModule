@@ -1,4 +1,6 @@
 package com.cg.ems.expense.service;
+
+import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,10 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Override
 	public List<Expense> displayAllExpense() {
-		return repo.findAll();
+
+		List<Expense> displayAll = repo.findAll();
+
+		return displayAll;
 	}
 
 	@Override
@@ -49,7 +54,6 @@ public class ExpenseServiceImpl implements ExpenseService {
 		}
 	}
 
-
 //	@Override
 //	public Expense modifyExpense(Expense expense) throws WrongIDException {
 //		try {
@@ -60,11 +64,27 @@ public class ExpenseServiceImpl implements ExpenseService {
 //	}
 
 	@Override
-	public int modifyExpense(int expCode, String expType, String expDescription) throws WrongIDException {
-		try {			
+	public int modifyExpense(Expense expense) throws WrongIDException {
+		int expCode = expense.getExpenseCode();
+		String expType = expense.getExpenseType();
+		String expDescription = expense.getExpenseDescription();
+		try {
 			return repo.modifyExpense(expCode, expType, expDescription);
 		} catch (Exception e) {
-			throw new WrongIDException("Expense wtih code "+expCode+" not found");
+			throw new WrongIDException("Expense wtih code " + expCode + " not found");
 		}
-	}	
+	}
+
+	@Override
+	public List<Integer> displayAllId() {
+		List<Integer> expId = new ArrayList<Integer>();
+		List<Expense> displayAll = repo.findAll();
+
+		for (Expense exp : displayAll) {
+			expId.add(exp.getExpenseCode());
+			//System.out.println(exp.getExpenseCode());
+		}
+
+		return expId;
+	}
 }
