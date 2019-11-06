@@ -56,9 +56,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 	@Override
 	public int modifyExpense(Expense expense) throws WrongIDException {
+		
 		int expCode = expense.getExpenseCode();
 		String expType = expense.getExpenseType();
 		String expDescription = expense.getExpenseDescription();
+		
 		try {
 			return repo.modifyExpense(expCode, expType, expDescription);
 		} catch (Exception e) {
