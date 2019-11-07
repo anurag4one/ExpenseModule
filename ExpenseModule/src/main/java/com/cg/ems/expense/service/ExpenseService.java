@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
+import com.cg.ems.expense.exception.WrongValidationException;
 
 /**
  * @author Anurag Kumar
@@ -15,7 +16,7 @@ import com.cg.ems.expense.exception.WrongIDException;
  */
 public interface ExpenseService {
 
-	Expense addExpense(Expense expense);
+	Expense addExpense(Expense expense) throws WrongValidationException;
 	
 	List<Expense> displayAllExpense();
 	
@@ -29,6 +30,6 @@ public interface ExpenseService {
 
 	List<Integer> displayAllId();
 
-	int modifyExpense(Expense expense) throws WrongIDException;
+	int modifyExpense(Expense expense) throws WrongIDException, WrongValidationException;
 
 }

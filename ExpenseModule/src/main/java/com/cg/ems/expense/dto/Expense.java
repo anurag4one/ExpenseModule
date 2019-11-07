@@ -34,7 +34,7 @@ public class Expense {
 	private String expenseType;
 	
 	@Column(name = "expense_description")
-	@Pattern(regexp = "[A-Za-z0-9_ ]{15,100}")
+	@Pattern(regexp = "[A-Za-z0-9_ ,.]{15,100}")
 	@NotBlank(message = "Description is mandatory, cannot be null")
 	private String expenseDescription;
 

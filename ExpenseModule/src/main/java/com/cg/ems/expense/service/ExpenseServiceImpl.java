@@ -3,10 +3,13 @@ package com.cg.ems.expense.service;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
+import com.cg.ems.expense.exception.WrongValidationException;
 import com.cg.ems.expense.repo.ExpenseRepo;
 
 /**
@@ -16,17 +19,24 @@ import com.cg.ems.expense.repo.ExpenseRepo;
  */
 
 @Service
-@Transactional(rollbackOn = WrongIDException.class)
+@Transactional(rollbackOn = {WrongIDException.class,WrongValidationException.class})
 public class ExpenseServiceImpl implements ExpenseService {
 
 	@Autowired
 	private ExpenseRepo repo;
 
 	@Override
-	public Expense addExpense(Expense expense) {
-		return repo.save(expense);
+	public Expense addExpense(Expense expense) throws WrongValidationException {
+		try {
+			return repo.save(expense);
+		} catch (AssertionError e) {
+			throw new WrongValidationException("Input in wrong format");
+		}
+		catch (ConstraintViolationException e) {
+			throw new WrongValidationException("Input in wrong format");
+		}
 	}
-
+	
 	@Override
 	public List<Expense> displayAllExpense() {
 
@@ -55,16 +65,22 @@ public class ExpenseServiceImpl implements ExpenseService {
 	}
 
 	@Override
-	public int modifyExpense(Expense expense) throws WrongIDException {
-		
+	public int modifyExpense(Expense expense) throws WrongIDException, WrongValidationException {
+
 		int expCode = expense.getExpenseCode();
 		String expType = expense.getExpenseType();
 		String expDescription = expense.getExpenseDescription();
-		
+
 		try {
-			return repo.modifyExpense(expCode, expType, expDescription);
-		} catch (Exception e) {
-			throw new WrongIDException("Expense with code " + expCode + " not found");
+			if (repo.findById(expCode) != null)
+				return repo.modifyExpense(expCode, expType, expDescription);
+			else
+				throw new WrongIDException("Expense with code " + expCode + " not found");
+		} catch (AssertionError e) {
+			throw new WrongValidationException("Validation error");
+		}
+		catch (ConstraintViolationException e) {
+			throw new WrongValidationException("Input in wrong format");
 		}
 	}
 
@@ -75,7 +91,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
 		for (Expense exp : displayAll) {
 			expId.add(exp.getExpenseCode());
-			//System.out.println(exp.getExpenseCode());
+			// System.out.println(exp.getExpenseCode());
 		}
 
 		return expId;

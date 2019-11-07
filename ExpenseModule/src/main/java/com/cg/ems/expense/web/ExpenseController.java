@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.ems.expense.dto.Expense;
 import com.cg.ems.expense.exception.WrongIDException;
+import com.cg.ems.expense.exception.WrongValidationException;
 import com.cg.ems.expense.service.ExpenseService;
 
 /**
@@ -32,7 +33,7 @@ public class ExpenseController {
 	private ExpenseService service;
 
 	@PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-	public Expense addNewExpense(@RequestBody Expense expense) {
+	public Expense addNewExpense(@RequestBody Expense expense) throws WrongValidationException {
 		return service.addExpense(expense);
 	}
 
@@ -59,7 +60,7 @@ public class ExpenseController {
 	}
 	
 	@PutMapping(value = "/update", consumes = "application/json", produces = "application/json")
-	public String updateExpense(@RequestBody Expense expense) throws WrongIDException {
+	public String updateExpense(@RequestBody Expense expense) throws WrongIDException, WrongValidationException {
 		int temp = service.modifyExpense(expense);
 		if(temp == 1)
 				return "Successfully modified";
