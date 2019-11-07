@@ -11,16 +11,22 @@ import { ExpenseService } from '../expense/expense.service';
 export class SearchComponent implements OnInit {
 
   expense: Expense;
-
+  found: boolean;
   constructor(private service: ExpenseService) {
     this.expense = new Expense();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   searchExpense() {
     this.service.findExpense(this.expense.expenseCode).subscribe(data => {
       this.expense = data
     });
+    if (this.expense != null)
+      this.found = true;
+    else {
+      alert("EXPENSE NOT FOUND");
+      this.found = false;
+    }
   }
 }

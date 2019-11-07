@@ -23,7 +23,7 @@ export class ModifyComponent implements OnInit {
     this.service.modifyExpense(this.expense).subscribe(e => this.expense1 = e);
     this.expense = new Expense();
     if(this.expense1 == "Successfully modified"){
-    alert("Expense modified");}
+        alert("Expense modified");}
     this.route.navigate(['list']);  
   }
 }

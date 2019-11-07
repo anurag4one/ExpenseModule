@@ -20,7 +20,7 @@
     </tr>
 </table>
 </form>
-
+<div [hidden]="!found">
 <table class="table table-bordered">
   <tr>
     <th>Expense Code</th>
@@ -33,3 +33,4 @@
     <td>{{expense.expenseDescription}}</td>
   </tr>
 </table>
+</div>
