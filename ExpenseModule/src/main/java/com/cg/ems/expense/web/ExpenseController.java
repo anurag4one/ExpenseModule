@@ -33,7 +33,7 @@ public class ExpenseController {
 
 	@Autowired
 	private ExpenseService service;
-	
+
 	@Autowired
 	private AdminService aService;
 
@@ -92,14 +92,16 @@ public class ExpenseController {
 		}
 	}
 
-	@GetMapping(value = "/updatePassword", produces = "application/json")
-	public String updateAdmin(@RequestParam("id") String id, @RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword) {
+	@PutMapping(value = "/updatePassword")
+	public String updateAdmin(@RequestParam("id") String id, @RequestParam("oldPassword") String oldPassword,
+			@RequestParam("newPassword") String newPassword) {
 		// logger.info("Trying for Login");
 		try {
 			// logger.info("Successful Employee login");
-			if(aService.updatePassword(id, oldPassword, newPassword) == 1)
-					return "Successfully updated password";
-			else			
+			if (aService.updatePassword(id, oldPassword, newPassword) == 1) {
+				System.out.println("Successfully updated password");
+				return "Successfully updated password";
+			} else
 				return "couldn't update";
 		} catch (AdminNotFoundException ex) {
 			// logger.error("Employees login not successful ");
