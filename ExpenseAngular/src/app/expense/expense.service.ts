@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Expense } from '../expensemodel/expense';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Admin } from '../adminmodel/admin';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
-   
+  
+  adm: Admin;
+
   private baseUrl = 'http://localhost:8182/expense';
   constructor(public http: HttpClient) { }
 
@@ -30,5 +33,18 @@ export class ExpenseService {
 
   deleteExpense(expCode: number){
     return this.http.delete<boolean>(this.baseUrl+"/delete/"+expCode);
+  }
+
+  loginAdmin(adminId:string, password:String){
+    return this.http.get("localhost:8182/expense/login/"+adminId+"/"+password);
+  }
+
+  saveAdmin(admin:Admin){
+    this.adm = admin;
+  }
+
+  deleteUser(){
+    this.adm = null;
+    alert("logged out !");
   }
 }

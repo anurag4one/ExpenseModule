@@ -79,8 +79,8 @@ public class ExpenseController {
 			return "Couldn't modify";
 	}
 
-	@GetMapping(value = "/login", produces = "application/json")
-	public Admin loginAdmin(@RequestParam("id") String id, @RequestParam("password") String password) {
+	@GetMapping(value = "/login/{id}/{password}", produces = "application/json")
+	public Admin loginAdmin(@PathVariable ("id") String id, @PathVariable("password") String password) {
 		// logger.info("Trying for Login");
 		try {
 			// logger.info("Successful Employee login");

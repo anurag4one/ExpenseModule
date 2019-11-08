@@ -10,6 +10,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { NaviRoutingModule } from './navi/navi-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './http-interceptor';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpErrorInterceptor } from './http-interceptor';
     SearchComponent,
     ListComponent,
     ModifyComponent,
-    DeleteComponent
+    DeleteComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
