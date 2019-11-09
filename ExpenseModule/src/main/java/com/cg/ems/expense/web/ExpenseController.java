@@ -26,7 +26,7 @@ import com.cg.ems.expense.service.ExpenseService;
  * @author admin
  *
  */
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200","http://localhost:4201","http://localhost:4206","http://localhost:4615","http://localhost:4620","http://localhost:4205"})
 @RestController
 @RequestMapping("/expense")
 public class ExpenseController {
