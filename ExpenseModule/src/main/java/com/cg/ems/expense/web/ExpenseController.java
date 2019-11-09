@@ -91,21 +91,21 @@ public class ExpenseController {
 			return null;
 		}
 	}
-
-	@PutMapping(value = "/updatePassword")
-	public String updateAdmin(@RequestParam("id") String id, @RequestParam("oldPassword") String oldPassword,
-			@RequestParam("newPassword") String newPassword) {
-		// logger.info("Trying for Login");
-		try {
-			// logger.info("Successful Employee login");
-			if (aService.updatePassword(id, oldPassword, newPassword) == 1) {
-				System.out.println("Successfully updated password");
-				return "Successfully updated password";
-			} else
-				return "couldn't update";
-		} catch (AdminNotFoundException ex) {
-			// logger.error("Employees login not successful ");
-			return ex.getMessage();
-		}
-	}
+//
+//	@PutMapping(value = "/updatePassword")
+//	public String updateAdmin(@RequestParam("id") String id, @RequestParam("oldPassword") String oldPassword,
+//			@RequestParam("newPassword") String newPassword) {
+//		// logger.info("Trying for Login");
+//		try {
+//			// logger.info("Successful Employee login");
+//			if (aService.updatePassword(id, oldPassword, newPassword) == 1) {
+//				System.out.println("Successfully updated password");
+//				return "Successfully updated password";
+//			} else
+//				return "couldn't update";
+//		} catch (AdminNotFoundException ex) {
+//			// logger.error("Employees login not successful ");
+//			return ex.getMessage();
+//		}
+	//}
 }

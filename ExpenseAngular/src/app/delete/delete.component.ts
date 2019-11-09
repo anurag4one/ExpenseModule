@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../expensemodel/expense';
 import { ExpenseService } from '../expense/expense.service';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete',
@@ -15,7 +15,7 @@ export class DeleteComponent implements OnInit {
   id:number;
   submitted:boolean;
 
-  constructor(private service: ExpenseService) { }
+  constructor(private service: ExpenseService, private route:Router) { }
 
   ngOnInit() {
     this.expense = new Expense();
@@ -35,5 +35,6 @@ export class DeleteComponent implements OnInit {
     if (ans){
       this.service.deleteExpense(this.expense.expenseCode).subscribe(data => this.b = data);
     }
+    this.route.navigate(['list']);
   }
 }

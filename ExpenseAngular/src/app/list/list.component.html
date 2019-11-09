@@ -9,9 +9,12 @@
     <th>Expense Type</th>
     <th>Expense Description</th>
   </tr>
-  <tr *ngFor="let e of expenses; let i = index">
+  <tr *ngFor="let e of expenses | paginate:{itemsPerPage: 5, currentPage:p}">
     <td>{{e.expenseCode}}</td>
     <td>{{e.expenseType}}</td>
     <td>{{e.expenseDescription}}</td>
   </tr>
 </table>
+<div class="text-right">
+<pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

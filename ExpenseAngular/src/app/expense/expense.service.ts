@@ -35,8 +35,8 @@ export class ExpenseService {
     return this.http.delete<boolean>(this.baseUrl+"/delete/"+expCode);
   }
 
-  loginAdmin(adminId:string, password:String){
-    return this.http.get("localhost:8182/expense/login/"+adminId+"/"+password);
+  loginAdmin(adminId:string, password:String):Observable<Admin>{
+    return this.http.get<Admin>(this.baseUrl+"/login/"+adminId+"/"+password);
   }
 
   saveAdmin(admin:Admin){

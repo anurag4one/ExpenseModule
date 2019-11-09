@@ -35,14 +35,13 @@ public class AdminServiceImpl implements AdminService {
 			throw new AdminNotFoundException("Wrong credentials");
 	}
 
-	@Override
-	public int updatePassword(String id, String oldPassword, String newPassword) throws AdminNotFoundException {
-
-		Admin admin = aRepo.loginAdmin(id, oldPassword);
-		if (admin != null)
-			return aRepo.updatePassword(id, newPassword);
-		else
-			throw new AdminNotFoundException("Wrong credentials");
-	}
-
+//	@Override
+//	public int updatePassword(String id, String oldPassword, String newPassword) throws AdminNotFoundException {
+//
+//		Admin admin = aRepo.loginAdmin(id, oldPassword);
+//		if (admin != null)
+//			return aRepo.updatePassword(id, newPassword);
+//		else
+//			throw new AdminNotFoundException("Wrong credentials");
+//	}
 }

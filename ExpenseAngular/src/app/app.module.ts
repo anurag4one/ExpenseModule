@@ -12,6 +12,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorInterceptor } from './http-interceptor';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { HomeComponent } from './home/home.component';
+import { NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { LogoutComponent } from './logout/logout.component';
     ModifyComponent,
     DeleteComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NaviRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

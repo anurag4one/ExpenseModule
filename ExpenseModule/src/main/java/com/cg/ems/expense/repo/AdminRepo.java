@@ -11,7 +11,8 @@ public interface AdminRepo extends JpaRepository<Admin, String>{
 	@Query("SELECT a FROM Admin a WHERE a.adminId=:id AND a.adminPassword=:password")
 	Admin loginAdmin(String id, String password) ;
 
-	@Modifying
-	@Query("UPDATE Admin a SET a.adminPassword=:newPassword WHERE a.adminId=:id")
-	int updatePassword(String id, String newPassword);
+//	@Modifying
+//	@Query("UPDATE Admin a SET a.adminPassword=:newPassword WHERE a.adminId=:id")
+//	int updatePassword(String id, String newPassword);
+
 }
