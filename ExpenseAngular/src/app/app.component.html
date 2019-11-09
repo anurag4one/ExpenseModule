@@ -1,5 +1,5 @@
-<h1 style="text-align: center">Expense Management System</h1>
-<nav class="navbar navbar-inverse">
+<h1 style="text-align: center;">Expense Management System</h1>
+<nav class="navbar navbar-dark bg-primary" style="background-color: #c5e7ff;">
   <div class="container-fluid">
     <div class="navbar-header">
       <a *ngIf="!flag" class="navbar-brand" >EMS</a>
@@ -13,7 +13,7 @@
         <li *ngIf="flag"><a [routerLink]="['list']">List All Expenses</a></li>
         <li *ngIf="flag"><a [routerLink]="['modify']">Modify An Expense</a></li>
         <li *ngIf="flag"><a [routerLink]="['delete']">Delete An Expense</a></li>
-        <li *ngIf="flag"><a [routerLink]="['logout']" >Logout</a></li>
+        <li *ngIf="flag" style="text"><a [routerLink]="['logout']" >Logout</a></li>
       </ul>
     </div>
   </div>
