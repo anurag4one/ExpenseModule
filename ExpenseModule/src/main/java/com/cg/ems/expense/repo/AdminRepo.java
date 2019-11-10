@@ -6,8 +6,19 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.cg.ems.expense.dto.Admin;
 
+/**
+ * @author Anurag Kumar
+ * @version 1.0
+ * 
+ */
 public interface AdminRepo extends JpaRepository<Admin, String>{
 	
+	/**
+	 * method with custom query for validating login
+	 * @param login
+	 * @param password
+	 * @return Admin
+	 */
 	@Query("SELECT a FROM Admin a WHERE a.adminId=:id AND a.adminPassword=:password")
 	Admin loginAdmin(String id, String password) ;
 

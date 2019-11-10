@@ -16,6 +16,13 @@ import com.cg.ems.expense.dto.Expense;
  */
 public interface ExpenseRepo extends JpaRepository <Expense, Integer> {
 
+	/**
+	 * method with custom query for Modifying expense
+	 * @param expense code
+	 * @param expense type
+	 * @param expense description
+	 * @return integer
+	 */
 	@Modifying
 	@Query("UPDATE Expense e SET e.expenseType=:eT, e.expenseDescription=:eD WHERE e.expenseCode=:eC")
 	int modifyExpense(int eC, String eT, String eD); 	

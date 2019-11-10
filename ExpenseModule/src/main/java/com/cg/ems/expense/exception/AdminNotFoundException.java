@@ -4,7 +4,8 @@
 package com.cg.ems.expense.exception;
 
 /**
- * @author admin
+ * @author Anurag Kumar
+ * @version 1.0
  *
  */
 public class AdminNotFoundException extends Exception {

@@ -3,6 +3,10 @@ package com.cg.ems.expense.exception;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
+/**
+ * @author Anurag Kumar
+ * @version 1.0
+ */
 public class WrongValidationException extends Exception {
 
 	@Override
