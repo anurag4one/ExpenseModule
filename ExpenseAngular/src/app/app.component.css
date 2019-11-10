@@ -1,1 +1,23 @@
-body{background-color:rgba(220, 225, 226, 0.918);} 
+h1{
+    /* font-family: 'Josefin Sans', sans-serif; */
+    font-family: 'Abel', sans-serif;
+}
+
+body, html{
+    height: 100%;
+  
+}
+
+
+/* body#bgimg{
+    opacity: 0.2;
+} */
+
+.bg{
+    height: max-content;
+    width: max-content;
+}
+
+
+
+div{font-size: large; font-weight: 550; font-family: 'Noto Sans TC', sans-serif;}

@@ -1,5 +1,5 @@
 body {
-	background: #DCDDDF url(https://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
+	background: url(https://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
 	color: #000;
 	font: 14px Arial;
 	margin: 0 auto;
@@ -31,9 +31,9 @@ form:after {
     visibility: hidden;
 
 }
-.container { margin: 25px auto; position: relative; width: 900px; }
+.container { margin: 100px auto; position: relative; width: 900px; }
 #content {
-	background: #f9f9f9;
+	background: #fffefeb0;
 	background: -moz-linear-gradient(top,  rgba(248,248,248,1) 0%, rgba(249,249,249,1) 100%);
 	background: -webkit-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
 	background: -o-linear-gradient(top,  rgba(248,248,248,1) 0%,rgba(249,249,249,1) 100%);
@@ -185,7 +185,7 @@ form:after {
 	font: bold 15px Helvetica, Arial, sans-serif;
 	height: 35px;
 	margin: 40px 50% 40px 30%;
-	position: ;
+	/* position: ; */
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     width: 120px;
 }
@@ -245,5 +245,5 @@ form:after {
 	color: #00aeef;
 }
 section{
-	height: 225px;
+	height: 250px;
 }
