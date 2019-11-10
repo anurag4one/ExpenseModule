@@ -25,6 +25,6 @@ export class AddComponent implements OnInit {
     this.service.saveExpense(this.expense).subscribe(e => this.expense1 = e);
     this.expense = new Expense();
     alert("Expense added")
-    this.route.navigate(['list']);              
+    this.route.navigate(['search']);              
   }
 }
